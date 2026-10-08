@@ -105,4 +105,29 @@ The datasets will be explored and transformed into the interaction representatio
 
 ## Status
 
-Week 1 - Research and Architecture
+## Week 1 Research
+
+### 1. Matrix Factorization
+
+Matrix factorization is a collaborative filtering technique used to learn relationships between students and courses. It will be considered as the main recommendation approach for this project.
+
+Reference:
+https://doi.org/10.1109/MC.2009.263
+
+### 2. Surprise Library
+
+Surprise is a Python library for building recommendation systems. It provides algorithms such as SVD for matrix factorization.
+
+Reference:
+https://github.com/NicolasHug/Surprise
+
+### 3. Cold-Start Recommendation
+
+Cold-start handling is important when a new student has little or no interaction history. A content-based fallback will be considered for such students.
+
+Reference:
+https://ceur-ws.org/Vol-1448/paper4.pdf
+
+## Research Findings
+
+The proposed system will use collaborative filtering with matrix factorization as the primary recommendation approach. Surprise SVD will be evaluated as the baseline model. A content-based fallback will be used for cold-start students.
