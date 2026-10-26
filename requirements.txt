@@ -1,0 +1,7 @@
+pandas
+numpy
+scikit-surprise
+scikit-learn
+fastapi
+uvicorn
+streamlit
