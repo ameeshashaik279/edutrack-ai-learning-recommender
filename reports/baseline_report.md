@@ -37,3 +37,19 @@
 - Evaluate the model on held-out data.
 - Implement and evaluate NDCG@10.
 - Document the cold-start recommendation approach.
+
+## 7. Initial Holdout Evaluation
+
+- Students evaluated: 5
+- Mean Precision@10: 0.100
+- Mean Recall@10: 1.000
+- Mean NDCG@10: 0.493
+- Target NDCG@10: 0.550
+- Status: Target not yet reached.
+
+### Evaluation Limitations
+- Only five students met the current relevance criteria.
+- The relevance threshold of 0.7 is provisional.
+- The dataset split follows row order; chronological ordering has not been verified.
+- Further evaluation and model improvements are required.
+
