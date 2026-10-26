@@ -53,3 +53,19 @@
 - The dataset split follows row order; chronological ordering has not been verified.
 - Further evaluation and model improvements are required.
 
+## 8. Interaction Data Analysis
+
+- Total engagement records: 600
+- Unique students: 459
+- Average records per student: 1.31
+- Students with multiple records: 117
+- Students with three or more records: 23
+- Duplicate student-subject pairs: 12
+
+### Implications
+- Most students have very limited interaction history.
+- Personalized recommendation evaluation is constrained by sparse data.
+- More repeated student-course interactions are needed for reliable evaluation.
+- Current NDCG@10 result is preliminary and should not be treated as final model performance.
+
+
