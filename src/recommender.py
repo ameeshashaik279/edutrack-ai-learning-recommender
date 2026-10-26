@@ -41,6 +41,7 @@ def train_model(engagements):
 
 
 def recommend_courses(model, student_id, n=5):
+
     """Suggest subjects the student has not engaged with yet."""
 
     seen_subjects = model["seen"].get(student_id, set())
@@ -64,3 +65,25 @@ def recommend_courses(model, student_id, n=5):
 
 if __name__ == "__main__":
     print("EduTrack engagement baseline initialized.")
+
+    """Recommend unseen courses using the baseline mean rating."""
+    seen = model.seen_courses.get(student_id, set())
+
+    candidates = [
+        course_id
+        for course_id in model.course_ids
+        if course_id not in seen
+    ]
+
+    return [
+        {
+            "course_id": course_id,
+            "score": model.mean_rating
+        }
+        for course_id in candidates[:max(0, n)]
+    ]
+
+
+if __name__ == "__main__":
+    print("EduTrack baseline recommender initialized.")
+ 223dfe85df6edc88c79a0f6f82b3fa421b1156b8
