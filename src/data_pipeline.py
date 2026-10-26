@@ -1,22 +1,13 @@
 
+
 import pandas as pd
-
-
-def load_student_data(path):
-    """Load student performance data."""
-    return pd.read_csv(path)
-
-
-def load_engagement_data(path):
-    """Load content engagement data."""
-    return pd.read_csv(path)
+from pathlib import Path
 
 
 def clean_data(df):
-    """Clean column names, duplicates, and missing values."""
+    """Clean and validate a dataset."""
     df = df.copy()
 
-    # Clean column names
     df.columns = (
         df.columns.astype(str)
         .str.strip()
@@ -24,27 +15,29 @@ def clean_data(df):
         .str.replace(" ", "_")
     )
 
-    # Remove duplicate rows
     df = df.drop_duplicates()
-
-    # Report missing values
-    print("Missing values before cleaning:")
-    print(df.isnull().sum())
-
     return df
-    
 
 
 if __name__ == "__main__":
-    student_path = "data/raw/aiml_student_performance.csv"
-    engagement_path = "data/raw/aiml_content_engagement.csv"
+    raw_dir = Path("data/raw")
+    processed_dir = Path("data/processed")
+    processed_dir.mkdir(parents=True, exist_ok=True)
 
-    print("Loading student performance data...")
-    student_df = clean_data(load_student_data(student_path))
-    print("Student dataset shape:", student_df.shape)
+    files = [
+        "aiml_student_performance.csv",
+        "aiml_content_engagement.csv",
+    ]
 
-    print("\nLoading content engagement data...")
-    engagement_df = clean_data(load_engagement_data(engagement_path))
-    print("Engagement dataset shape:", engagement_df.shape)
+    for filename in files:
+        print(f"\nProcessing {filename}...")
 
+        df = pd.read_csv(raw_dir / filename)
+        df = clean_data(df)
 
+        output_path = processed_dir / filename
+        df.to_csv(output_path, index=False)
+
+        print("Shape:", df.shape)
+        print("Missing values:", df.isnull().sum().sum())
+        print("Saved to:", output_path)
