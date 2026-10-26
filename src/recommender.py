@@ -3,6 +3,8 @@ import pandas as pd
 
 
 def train_model(engagements):
+    """Build a subject and content-type recommendation baseline."""
+
     required = {
         "student_id",
         "subject",
@@ -23,26 +25,41 @@ def train_model(engagements):
     if data.empty:
         raise ValueError("No valid engagement data found.")
 
-    scores = (
+    # Average engagement for each subject and content type
+    content_scores = (
         data.groupby(["subject", "content_type"])["engagement_score"]
         .mean()
         .sort_values(ascending=False)
     )
 
-    seen = data.groupby("student_id")["subject"].apply(set).to_dict()
+    # Track subject and content types already seen by each student
+    seen = (
+        data.groupby("student_id")
+        .apply(
+            lambda group: set(
+                zip(group["subject"], group["content_type"])
+            )
+        )
+        .to_dict()
+    )
 
     return {
-        "scores": scores,
+        "content_scores": content_scores,
         "seen": seen,
     }
 
 
 def recommend_courses(model, student_id, n=5):
-    seen_subjects = model["seen"].get(student_id, set())
+    """Recommend unseen subject and content-type combinations."""
+
+    if n <= 0:
+        return []
+
+    seen_items = model["seen"].get(student_id, set())
     recommendations = []
 
-    for (subject, content_type), score in model["scores"].items():
-        if subject in seen_subjects:
+    for (subject, content_type), score in model["content_scores"].items():
+        if (subject, content_type) in seen_items:
             continue
 
         recommendations.append({
@@ -55,5 +72,3 @@ def recommend_courses(model, student_id, n=5):
             break
 
     return recommendations
-
-
