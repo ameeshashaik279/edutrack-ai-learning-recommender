@@ -28,6 +28,7 @@ for student_id in test_students:
     recommended_subjects = list(dict.fromkeys(
         item["subject"] for item in recommendations
     ))
+    print("Recommended items:", recommendations)
 
     student_test = test_data[test_data["student_id"] == student_id]
 
