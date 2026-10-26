@@ -13,3 +13,5 @@ results = evaluate_recommendations(
 print("Evaluation Results:")
 print("Precision@4:", results["precision_at_k"])
 print("Recall@4:", results["recall_at_k"])
+print("Recall@4:", results["recall_at_k"])
+print("NDCG@4:", round(results["ndcg_at_k"], 3))
