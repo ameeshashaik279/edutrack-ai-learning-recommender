@@ -131,3 +131,117 @@ https://ceur-ws.org/Vol-1448/paper4.pdf
 ## Research Findings
 
 The proposed system will use collaborative filtering with matrix factorization as the primary recommendation approach. Surprise SVD will be evaluated as the baseline model. A content-based fallback will be used for cold-start students.
+
+
+## Week 6 – Model Experiments and Reproducibility
+
+### 1. Environment Setup
+
+Requirements:
+- Python 3.12
+- pandas
+- scikit-learn
+- scikit-surprise
+- MLflow
+- numpy
+- joblib
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run Model Experiments
+
+Run the following commands from the project root:
+
+```bash
+python src/train_cf.py
+python src/tune_svd.py
+python src/compare_svd_ndcg.py
+python src/compare_models.py
+python src/evaluate_hybrid.py
+python src/tune_hybrid.py
+python src/hybrid_recommender.py
+```
+
+### 3. MLflow Experiment Tracking
+
+Start the MLflow UI:
+
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000
+```
+
+View experiment runs, parameters, metrics, and logged artifacts.
+
+### 4. Evaluation Reports
+
+Generated reports are available in the `reports/` directory:
+
+- svd_experiment_results.csv
+- svd_tuning_results.csv
+- svd_ndcg_comparison.csv
+- fair_model_comparison.csv
+- content_based_evaluation.csv
+- hybrid_evaluation.csv
+- hybrid_weight_tuning.csv
+
+### 5. Evaluation Summary
+
+The chronological model comparison produced:
+
+| Model | NDCG@10 |
+|---|---:|
+| Popularity | 0.1207 |
+| SVD | 0.0561 |
+| Content-Based | 0.1083 |
+| Hybrid | 0.0806 |
+
+The target NDCG@10 of 0.55 has not yet been achieved. Further model improvements and evaluation are required.
+
+### 6. GitHub Repository
+
+https://github.com/ameeshashaik279/edutrack-ai-learning-recommender
+
+### MLflow Experiment Tracking
+
+Experiment Name: EduTrack_SVD_Experiments
+
+| Run | n_factors | n_epochs | reg_all | RMSE | MAE |
+|---|---:|---:|---:|---:|---:|
+| SVD_Config_1 | 20 | 20 | 0.02 | 1.0602 | 0.9238 |
+| SVD_Config_2 | 50 | 30 | 0.05 | 1.0699 | 0.9299 |
+
+Both experiments completed successfully and were tracked using MLflow.
+
+Best configuration based on RMSE and MAE: SVD_Config_1.
+
+### Reproducing MLflow Experiments
+
+1. Install project dependencies:
+
+   pip install -r requirements.txt
+
+2. Run the SVD experiment:
+
+   python src/train_cf.py
+
+3. Start the MLflow UI:
+
+   mlflow ui --backend-store-uri sqlite:///mlflow.db
+
+4. Open the MLflow dashboard:
+
+   http://127.0.0.1:5000
+
+5. Select EduTrack_SVD_Experiments to compare the experiment runs.
+
+Note: Run the commands from the project root directory.
