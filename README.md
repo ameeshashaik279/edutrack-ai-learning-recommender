@@ -245,3 +245,28 @@ Best configuration based on RMSE and MAE: SVD_Config_1.
 5. Select EduTrack_SVD_Experiments to compare the experiment runs.
 
 Note: Run the commands from the project root directory.
+
+### Error Analysis
+
+The dataset contains 600 interactions from 459 students.
+
+Key findings:
+- 342 students (74.5%) have only one interaction.
+- 117 students have at least two interactions.
+- Only 23 students have at least three interactions.
+- The limited interaction history creates a sparse user-item matrix.
+
+Model comparison:
+- Popularity NDCG@10: 0.1207
+- SVD NDCG@10: 0.0561
+
+SVD underperforms because collaborative filtering needs sufficient
+user-item interaction history to learn reliable preference patterns.
+The popularity baseline is more robust on this sparse dataset
+because it uses aggregate engagement.
+
+Detailed reports:
+- reports/error_analysis_by_subject.csv
+- reports/error_analysis_by_content_type.csv
+
+The target NDCG@10 of 0.55 has not yet been achieved.
