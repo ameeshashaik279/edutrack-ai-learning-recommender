@@ -1,0 +1,2 @@
+model,n_factors,n_epochs,reg_all,students_evaluated,NDCG@10,target,evaluation
+SVD,20,20,0.02,34,0.06690304109038182,0.55,Unseen items known to training catalog

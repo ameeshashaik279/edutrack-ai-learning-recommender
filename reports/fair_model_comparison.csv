@@ -1,0 +1,26 @@
+student_id,relevant_item,Popularity_NDCG@10,SVD_NDCG@10,Content_NDCG@10
+STU-00754,Physics|Live Session,0.0,0.0,0.0
+STU-00304,English Grammar|Quiz,0.0,0.0,0.0
+STU-00599,Mathematics|Quiz,0.0,0.0,0.0
+STU-00862,Python Programming|Live Session,0.0,0.0,0.3333333333333333
+STU-00120,Chemistry|Assignment,0.0,0.0,0.38685280723454163
+STU-00424,Mathematics|Assignment,0.0,0.0,0.0
+STU-00217,Digital Marketing|Practice Problem,0.0,0.0,0.0
+STU-00233,Digital Marketing|Quiz,0.0,0.0,0.0
+STU-00206,English Grammar|Assignment,1.0,0.3562071871080222,0.0
+STU-00204,Web Development|Practice Problem,0.0,0.0,0.0
+STU-00883,Data Science|Reading,0.0,0.0,0.6309297535714575
+STU-00388,English Grammar|Reading,0.0,0.0,0.0
+STU-00835,Mathematics|Reading,0.0,0.0,0.0
+STU-00752,Python Programming|Assignment,0.0,0.0,0.3562071871080222
+STU-00016,Digital Marketing|Quiz,0.0,0.0,1.0
+STU-00374,Physics|Reading,0.0,0.0,0.0
+STU-00484,Data Science|Video,0.0,0.0,0.0
+STU-00731,English Grammar|Assignment,1.0,0.43067655807339306,0.0
+STU-00968,Data Science|Live Session,0.0,0.0,0.0
+STU-00400,Finance|Practice Problem,0.38685280723454163,0.3010299956639812,0.0
+STU-00314,English Grammar|Practice Problem,0.6309297535714575,0.31546487678572877,0.0
+STU-00316,Finance|Video,0.0,0.0,0.0
+STU-00706,Finance|Assignment,0.0,0.0,0.0
+STU-00154,English Grammar|Reading,0.0,0.0,0.0
+STU-00246,Python Programming|Video,0.0,0.0,0.0
